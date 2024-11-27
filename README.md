@@ -1,4 +1,4 @@
-# Flutter Dynamic Icon Plugin
+# Flutter Icon Dynamic Plugin
 
 A Flutter plugin for changing the app icon dynamically. Available for both Android and iOS.
 
