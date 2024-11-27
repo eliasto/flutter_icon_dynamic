@@ -46,7 +46,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:enabled="false"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
