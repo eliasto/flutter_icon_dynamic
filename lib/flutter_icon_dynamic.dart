@@ -1,7 +1,7 @@
 import 'flutter_icon_dynamic_platform_interface.dart';
 
 class FlutterIconDynamic {
-  Future<bool> setIcon(String iconName, List<String>? androidIcons) {
+  Future<bool> setIcon(String iconName, {List<String>? androidIcons}) {
     return FlutterIconDynamicPlatform.instance.setIcon(iconName, androidIcons);
   }
 
