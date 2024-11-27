@@ -1,0 +1,28 @@
+name: flutter_icon_dynamic
+description: "Change your mobile app icon dynamically"
+author: "eliasto"
+version: 1.0.0
+homepage: https://github.com/eliasto/flutter_icon_dynamic
+
+environment:
+  sdk: '>=3.3.1 <4.0.0'
+  flutter: '>=3.3.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.example.flutter_icon_dynamic
+        pluginClass: FlutterIconDynamicPlugin
+      ios:
+        pluginClass: FlutterIconDynamicPlugin
