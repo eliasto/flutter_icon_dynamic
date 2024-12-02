@@ -15,9 +15,9 @@ const List<String> iconsIOS = <String>[
 ];
 
 const List<String> iconsAndroid = <String>[
-  'SncfConnect',
-  'SncfConnectGreen',
-  'SncfConnectYellow'
+  'appicon.sncf_connect',
+  'appicon.sncf_connect_green',
+  'appicon.sncf_connect_yellow'
 ];
 
 void main() {
@@ -42,8 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> changeIcon(String icon, BuildContext context) async {
     try {
-      final value = await _flutterIconDynamicPlugin.setIcon(icon,
-          androidIcons: iconsAndroid);
+      final value = await _flutterIconDynamicPlugin.setIcon(icon, androidIcons: iconsAndroid);
       if (value) {
         showSnackBar(context, 'Icon changed to $icon');
       } else {
@@ -84,8 +83,7 @@ class _MyAppState extends State<MyApp> {
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
-                      return Text(
-                          "Is custom icons supported: ${snapshot.data}");
+                      return Text("Is custom icons supported: ${snapshot.data}");
                     }
                   },
                 ),
