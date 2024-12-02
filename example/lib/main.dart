@@ -17,7 +17,8 @@ const List<String> iconsIOS = <String>[
 const List<String> iconsAndroid = <String>[
   'appicon.sncf_connect',
   'appicon.sncf_connect_green',
-  'appicon.sncf_connect_yellow'
+  'appicon.sncf_connect_yellow',
+  'com.example.flutter_icon_dynamic_example.MainActivity'
 ];
 
 void main() {
