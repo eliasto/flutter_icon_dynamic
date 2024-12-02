@@ -42,37 +42,16 @@ class FlutterIconDynamicPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     private fun changeIcon(iconName: String, androidIcons: List<String>, result: Result) {
-        val packageManager = context.packageManager
-        val mainActivityName = "${context.packageName}.MainActivity"
+        val packageManager = context.applicationContext.packageManager
 
         try {
-            val aliases = androidIcons.map { "$mainActivityName$it" }.toMutableList()
-            aliases.add(mainActivityName)
-
-            if (aliases.isEmpty()) {
-                result.error("NO_ALIASES", "No aliases found for MainActivity", null)
-                return
-            }
-
-            for (alias in aliases) {
+            for (icon in androidIcons) {
                 packageManager.setComponentEnabledSetting(
-                    ComponentName(context, alias),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    ComponentName(context.packageName, icon),
+                    if (icon == iconName) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                     PackageManager.DONT_KILL_APP
                 )
             }
-
-            val selectedAlias = "${context.packageName}.MainActivity$iconName"
-            if (!aliases.contains(selectedAlias)) {
-                result.error("INVALID_ALIAS", "Alias $selectedAlias not found", null)
-                return
-            }
-
-            packageManager.setComponentEnabledSetting(
-                ComponentName(context, selectedAlias),
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP
-            )
 
             result.success(true)
         } catch (e: Exception) {

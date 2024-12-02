@@ -43,8 +43,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> changeIcon(String icon, BuildContext context) async {
     try {
-      final value = await _flutterIconDynamicPlugin.setIcon(icon,
-          androidIcons: iconsAndroid);
+      final value = await _flutterIconDynamicPlugin.setIcon(icon, androidIcons: iconsAndroid);
       if (value) {
         showSnackBar(context, 'Icon changed to $icon');
       } else {
