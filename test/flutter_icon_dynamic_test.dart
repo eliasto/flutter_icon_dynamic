@@ -4,9 +4,7 @@ import 'package:flutter_icon_dynamic/flutter_icon_dynamic_platform_interface.dar
 import 'package:flutter_icon_dynamic/flutter_icon_dynamic_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockFlutterIconDynamicPlatform
-    with MockPlatformInterfaceMixin
-    implements FlutterIconDynamicPlatform {
+class MockFlutterIconDynamicPlatform with MockPlatformInterfaceMixin implements FlutterIconDynamicPlatform {
   @override
   Future<bool> get isSupported => Future.value(true);
 
@@ -17,8 +15,7 @@ class MockFlutterIconDynamicPlatform
 }
 
 void main() {
-  final FlutterIconDynamicPlatform initialPlatform =
-      FlutterIconDynamicPlatform.instance;
+  final FlutterIconDynamicPlatform initialPlatform = FlutterIconDynamicPlatform.instance;
 
   test('$MethodChannelFlutterIconDynamic is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelFlutterIconDynamic>());
@@ -26,10 +23,17 @@ void main() {
 
   test('getIsSupported', () async {
     FlutterIconDynamic flutterIconDynamicPlugin = FlutterIconDynamic();
-    MockFlutterIconDynamicPlatform fakePlatform =
-        MockFlutterIconDynamicPlatform();
+    MockFlutterIconDynamicPlatform fakePlatform = MockFlutterIconDynamicPlatform();
     FlutterIconDynamicPlatform.instance = fakePlatform;
 
     expect(await flutterIconDynamicPlugin.isSupported, true);
+  });
+
+  test('setIcon', () async {
+    FlutterIconDynamic flutterIconDynamicPlugin = FlutterIconDynamic();
+    MockFlutterIconDynamicPlatform fakePlatform = MockFlutterIconDynamicPlatform();
+    FlutterIconDynamicPlatform.instance = fakePlatform;
+
+    expect(await flutterIconDynamicPlugin.setIcon('icon', androidIcons: ['icon']), true);
   });
 }
