@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -36,21 +34,16 @@ class _MyAppState extends State<MyApp> {
   String dropdownValue = Platform.isIOS ? iconsIOS.first : iconsAndroid.first;
   final _flutterIconDynamicPlugin = FlutterIconDynamic();
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Future<void> changeIcon(String icon, BuildContext context) async {
     try {
       final value = await _flutterIconDynamicPlugin.setIcon(icon, androidIcons: iconsAndroid);
-      if (value) {
-        showSnackBar(context, 'Icon changed to $icon');
-      } else {
-        showSnackBar(context, 'Failed to change icon to $icon');
+      if (context.mounted) {
+        showSnackBar(context, value ? 'Icon changed to $icon' : 'Failed to change icon to $icon');
       }
     } catch (e) {
-      showSnackBar(context, 'Failed to change icon to $icon: $e');
+      if (context.mounted) {
+        showSnackBar(context, 'Failed to change icon to $icon: $e');
+      }
     }
   }
 

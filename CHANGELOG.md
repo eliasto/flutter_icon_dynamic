@@ -1,3 +1,8 @@
+## 0.0.2
+
+- Edit pubspec.yaml description
+- Edit `example/lib/main.dart` by using BuildContext synchronously
+
 ## 0.0.1
 
 Initial release including the following features:
